@@ -587,7 +587,7 @@ DEP_LIST = [
       "version": "0.9.1"
     },
     {
-      "package": "github.com/kubepack/onessl",
+      "package": "github.com/kube-ci/cli",
       "version": "0.9.0"
     }
 ]

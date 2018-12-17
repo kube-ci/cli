@@ -18,10 +18,10 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/"$(curl -s ht
 chmod +x ./kubectl
 mv ./kubectl /bin/kubectl
 
-# install onessl
-curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/$ONESSL_VERSION/onessl-linux-amd64
-chmod +x onessl
-mv onessl /usr/local/bin/
+# install cli
+curl -fsSL -o cli https://github.com/kube-ci/cli/releases/download/$ONESSL_VERSION/cli-linux-amd64
+chmod +x cli
+mv cli /usr/local/bin/
 
 # install pharmer
 if [[ "$ClusterProvider" != "cncf" && "$ClusterProvider" != "kubespray" && "$ClusterProvider" != "aws" ]]; then
