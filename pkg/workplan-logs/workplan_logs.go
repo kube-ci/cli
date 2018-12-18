@@ -34,11 +34,6 @@ func GetLogs(clientConfig *rest.Config, query logs.Query) error {
 // if Workplan name not provided, ask Workflow name, then ask to select a Workplan
 // if Workplan name provided, we don't need Workflow
 func prepare(c *logs.LogController, query *logs.Query) error {
-	if query.Namespace == "" {
-		if err := askNamespace(c, query); err != nil {
-			return err
-		}
-	}
 	if query.Workplan == "" {
 		if query.Workflow == "" {
 			if err := askWorkflow(c, query); err != nil {
@@ -55,31 +50,6 @@ func prepare(c *logs.LogController, query *logs.Query) error {
 	return nil
 }
 
-func askNamespace(c *logs.LogController, query *logs.Query) error {
-	var namespaceNames []string
-	namespaces, err := c.KubeClient.CoreV1().Namespaces().List(metav1.ListOptions{})
-	if err != nil {
-		return err
-	}
-	for _, ns := range namespaces.Items {
-		namespaceNames = append(namespaceNames, ns.Name)
-	}
-	if len(namespaceNames) == 0 {
-		return fmt.Errorf("no namespace found")
-	}
-
-	qs := []*survey.Question{
-		{
-			Name: "Namespace",
-			Prompt: &survey.Select{
-				Message: "Choose a Namespace:",
-				Options: namespaceNames,
-			},
-		},
-	}
-	return survey.Ask(qs, query)
-}
-
 func askWorkflow(c *logs.LogController, query *logs.Query) error {
 	// list all workflows in the given Namespace
 	var workflowNames []string
@@ -91,7 +61,7 @@ func askWorkflow(c *logs.LogController, query *logs.Query) error {
 		workflowNames = append(workflowNames, wf.Name)
 	}
 	if len(workflowNames) == 0 {
-		return fmt.Errorf("no workflow found")
+		return fmt.Errorf("no workflow found in namespace %s", query.Namespace)
 	}
 
 	qs := []*survey.Question{
@@ -119,7 +89,7 @@ func askWorkplan(c *logs.LogController, query *logs.Query) error {
 		workplanNames = append(workplanNames, wp.Name)
 	}
 	if len(workplanNames) == 0 {
-		return fmt.Errorf("no workplan found")
+		return fmt.Errorf("no workplan found for workflow %s/%s", query.Namespace, query.Workflow)
 	}
 
 	qs := []*survey.Question{

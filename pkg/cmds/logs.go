@@ -12,11 +12,19 @@ func NewCmdWorkplanLogs(clientGetter genericclioptions.RESTClientGetter) *cobra.
 	var query logs.Query
 
 	cmd := &cobra.Command{
-		Use:               "workplan-logs",
+		Use:               "logs",
 		Short:             "Get workplan logs",
 		Long:              "Get workplan logs",
 		DisableAutoGenTag: true,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		Args:              cobra.MaximumNArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) (err error) {
+			if len(args) == 1 {
+				query.Workplan = args[0]
+			}
+			query.Namespace, _, err = clientGetter.ToRawKubeConfigLoader().Namespace()
+			if err != nil {
+				return err
+			}
 			cfg, err := clientGetter.ToRESTConfig()
 			if err != nil {
 				return err
@@ -27,14 +35,7 @@ func NewCmdWorkplanLogs(clientGetter genericclioptions.RESTClientGetter) *cobra.
 			return nil
 		},
 	}
-	cmd.Flags().StringVar(&query.Namespace, "namespace", "", "Namespace of the workflow.") // TODO: set default ns?
 	cmd.Flags().StringVar(&query.Workflow, "workflow", "", "Name of the workflow.")
-	cmd.Flags().StringVar(&query.Workplan, "workplan", "", "Name of the workplan.")
 	cmd.Flags().StringVar(&query.Step, "step", "", "Name of the step.")
 	return cmd
 }
-
-// engine workplan-logs --namespace default --workplan wf-pr-test-9dtw8 --step step-test
-// using kubectl-plugin
-// cp /home/dipta/go/bin/engine /home/dipta/go/bin/kubectl-kubeci
-// kubectl kubeci workplan-logs
