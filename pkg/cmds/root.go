@@ -5,9 +5,11 @@ import (
 
 	v "github.com/appscode/go/version"
 	"github.com/appscode/kutil/tools/cli"
+	"github.com/kube-ci/engine/client/clientset/versioned/scheme"
 	"github.com/spf13/cobra"
 	utilflag "k8s.io/apiserver/pkg/util/flag"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
+	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
 	cmdutil "k8s.io/kubernetes/pkg/kubectl/cmd/util"
 )
 
@@ -18,6 +20,7 @@ func NewRootCmd() *cobra.Command {
 		DisableAutoGenTag: true,
 		PersistentPreRun: func(c *cobra.Command, args []string) {
 			cli.SendAnalytics(c, v.Version.Version)
+			scheme.AddToScheme(clientsetscheme.Scheme)
 		},
 	}
 
@@ -37,6 +40,7 @@ func NewRootCmd() *cobra.Command {
 	flags.BoolVar(&cli.EnableAnalytics, "analytics", cli.EnableAnalytics, "Send analytical events to Google Analytics")
 	flag.Set("stderrthreshold", "ERROR")
 
+	rootCmd.AddCommand(NewCmdWorkplanLogs(matchVersionKubeConfigFlags))
 	rootCmd.AddCommand(NewCmdGet(matchVersionKubeConfigFlags))
 	rootCmd.AddCommand(v.NewCmdVersion())
 	return rootCmd
