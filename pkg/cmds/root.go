@@ -16,7 +16,7 @@ import (
 func NewRootCmd() *cobra.Command {
 	rootCmd := &cobra.Command{
 		Use:               "ci [command]",
-		Short:             `ci by AppsCode - KubeCI cli`,
+		Short:             `KubeCI by AppsCode - Kubernetes Native Workflow Engine`,
 		DisableAutoGenTag: true,
 		PersistentPreRun: func(c *cobra.Command, args []string) {
 			cli.SendAnalytics(c, v.Version.Version)
