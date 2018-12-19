@@ -37,5 +37,6 @@ func NewCmdWorkplanLogs(clientGetter genericclioptions.RESTClientGetter) *cobra.
 	}
 	cmd.Flags().StringVar(&query.Workflow, "workflow", "", "Name of the workflow.")
 	cmd.Flags().StringVar(&query.Step, "step", "", "Name of the step.")
+	cmd.Flags().BoolVarP(&query.Follow, "follow", "f", false, "Specify if the logs should be streamed.")
 	return cmd
 }

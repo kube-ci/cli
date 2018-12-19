@@ -41,7 +41,6 @@ func NewRootCmd() *cobra.Command {
 	flag.Set("stderrthreshold", "ERROR")
 
 	rootCmd.AddCommand(NewCmdWorkplanLogs(matchVersionKubeConfigFlags))
-	rootCmd.AddCommand(NewCmdGet(matchVersionKubeConfigFlags))
 	rootCmd.AddCommand(v.NewCmdVersion())
 	return rootCmd
 }
