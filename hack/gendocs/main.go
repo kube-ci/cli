@@ -21,12 +21,12 @@ const (
 
 var (
 	tplFrontMatter = template.Must(template.New("index").Parse(`---
-title: Reference | KubeCI Engine
-description: KubeCI Engine CLI Reference
+title: Reference | KubeCI CLI
+description: KubeCI CLI Reference
 menu:
   product_kubeci_{{ .Version }}:
     identifier: reference-cli
-    name: KubeCI Engine
+    name: KubeCI CLI
     weight: 10
     parent: reference
 menu_name: product_kubeci_{{ .Version }}
