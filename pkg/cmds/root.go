@@ -5,7 +5,8 @@ import (
 
 	v "github.com/appscode/go/version"
 	"github.com/appscode/kutil/tools/cli"
-	"github.com/kube-ci/engine/client/clientset/versioned/scheme"
+	enginescheme "github.com/kube-ci/engine/client/clientset/versioned/scheme"
+	gitscheme "github.com/kube-ci/git-apiserver/client/clientset/versioned/scheme"
 	"github.com/spf13/cobra"
 	utilflag "k8s.io/apiserver/pkg/util/flag"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
@@ -20,7 +21,8 @@ func NewRootCmd() *cobra.Command {
 		DisableAutoGenTag: true,
 		PersistentPreRun: func(c *cobra.Command, args []string) {
 			cli.SendAnalytics(c, v.Version.Version)
-			scheme.AddToScheme(clientsetscheme.Scheme)
+			enginescheme.AddToScheme(clientsetscheme.Scheme)
+			gitscheme.AddToScheme(clientsetscheme.Scheme)
 		},
 	}
 

@@ -1,7 +1,5 @@
 package: github.com/kube-ci/cli
 import:
-- package: github.com/kube-ci/engine
-  version: master
 - package: github.com/appscode/go
   version: master
 - package: github.com/appscode/kutil
@@ -21,6 +19,10 @@ import:
 - package: github.com/jpillora/go-ogle-analytics
 - package: github.com/json-iterator/go
   version: 1.1.5
+- package: github.com/kube-ci/engine
+  version: master
+- package: github.com/kube-ci/git-apiserver
+  version: master
 - package: github.com/pkg/errors
   version: v0.8.0
 - package: github.com/russross/blackfriday

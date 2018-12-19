@@ -1,5 +1,5 @@
-hash: b70abd3d12ab1c4d273b945ba802ec2517612b5208e4cb27f5e88400f1aff9d0
-updated: 2018-12-18T12:32:23.257072503+06:00
+hash: f0ddadee4ea5e5f5c4c1df306d88b88c0b3dabb23b2ebec0de7f81e78effc999
+updated: 2018-12-18T21:25:10.856717912-08:00
 imports:
 - name: github.com/appscode/go
   version: 584aaa73af837f112c0a471be398ea837341c330
@@ -90,7 +90,7 @@ imports:
 - name: github.com/go-openapi/jsonreference
   version: 13c6e3589ad90f49bd3e3bbe2c2cb3d7a4142272
 - name: github.com/go-openapi/spec
-  version: 7abd5745472fff5eb3685386d5fb8bf38683154d
+  version: 1de3e0542de65ad8d75452a595886fdd0befb363
 - name: github.com/go-openapi/swag
   version: f3f9494671f93fcff853e3c6e9e948b3eb71e590
 - name: github.com/gogo/protobuf
@@ -123,6 +123,14 @@ imports:
   - cmp/internal/diff
   - cmp/internal/function
   - cmp/internal/value
+- name: github.com/google/go-github
+  version: 08dbadce1a0514f79ea9a9aa91b2f12ba656d5a7
+  subpackages:
+  - github
+- name: github.com/google/go-querystring
+  version: 44c6ddd0a2342c386950e880b658017258da92fc
+  subpackages:
+  - query
 - name: github.com/google/gofuzz
   version: 44d81051d367757e1c7c6a5a86423ece9afcf63c
 - name: github.com/google/uuid
@@ -151,10 +159,8 @@ imports:
   version: 14b04e0594ef6a9fd943363b135656f0ec8c9d0e
 - name: github.com/json-iterator/go
   version: 1624edc4454b8682399def8740d46db5e4362ba4
-- name: github.com/kballard/go-shellquote
-  version: 95032a82bc518f77982ea72343cc1ade730072f0
 - name: github.com/kube-ci/engine
-  version: ebb25b4dc0058d752854ffadff43eab9b6fc227d
+  version: f894949e8a48393a7dd5836c9ae25b04fbf1f384
   subpackages:
   - apis/engine
   - apis/engine/v1alpha1
@@ -164,6 +170,13 @@ imports:
   - client/clientset/versioned/typed/engine/v1alpha1
   - client/clientset/versioned/typed/extensions/v1alpha1
   - pkg/logs
+- name: github.com/kube-ci/git-apiserver
+  version: 41a94cb71b58e788e96afe798657b6912d13d9b8
+  subpackages:
+  - apis/git
+  - apis/git/v1alpha1
+  - apis/webhooks/v1alpha1
+  - client/clientset/versioned/scheme
 - name: github.com/mailru/easyjson
   version: 2f5df55504ebc322e4d52d34df6a1f5b503bf26d
   subpackages:
@@ -281,7 +294,7 @@ imports:
   - internal/urlfetch
   - urlfetch
 - name: gopkg.in/AlecAivazis/survey.v1
-  version: e205523512c83e9236698dbe7eb9649ec56e80ca
+  version: 17861e192dc11fd2f5081df1932c94cce262fa1e
   subpackages:
   - core
   - terminal
@@ -649,7 +662,7 @@ imports:
   - exec
   - pointer
 - name: sigs.k8s.io/yaml
-  version: 5fa4c7f5e38dda46711e0c2efd62370cfae67205
+  version: fd68e9863619f6ec2fdd8625fe1f02e7c877e480
 - name: vbom.ml/util
   version: db5cfe13f5cc80a4990d98e2e1b0707a4d1a5394
   subpackages:
