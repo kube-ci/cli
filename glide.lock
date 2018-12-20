@@ -1,5 +1,5 @@
 hash: f0ddadee4ea5e5f5c4c1df306d88b88c0b3dabb23b2ebec0de7f81e78effc999
-updated: 2018-12-18T21:25:10.856717912-08:00
+updated: 2018-12-19T14:08:10.449069913+06:00
 imports:
 - name: github.com/appscode/go
   version: 584aaa73af837f112c0a471be398ea837341c330
@@ -90,7 +90,7 @@ imports:
 - name: github.com/go-openapi/jsonreference
   version: 13c6e3589ad90f49bd3e3bbe2c2cb3d7a4142272
 - name: github.com/go-openapi/spec
-  version: 1de3e0542de65ad8d75452a595886fdd0befb363
+  version: 7abd5745472fff5eb3685386d5fb8bf38683154d
 - name: github.com/go-openapi/swag
   version: f3f9494671f93fcff853e3c6e9e948b3eb71e590
 - name: github.com/gogo/protobuf
@@ -159,6 +159,8 @@ imports:
   version: 14b04e0594ef6a9fd943363b135656f0ec8c9d0e
 - name: github.com/json-iterator/go
   version: 1624edc4454b8682399def8740d46db5e4362ba4
+- name: github.com/kballard/go-shellquote
+  version: 95032a82bc518f77982ea72343cc1ade730072f0
 - name: github.com/kube-ci/engine
   version: f894949e8a48393a7dd5836c9ae25b04fbf1f384
   subpackages:
@@ -294,7 +296,7 @@ imports:
   - internal/urlfetch
   - urlfetch
 - name: gopkg.in/AlecAivazis/survey.v1
-  version: 17861e192dc11fd2f5081df1932c94cce262fa1e
+  version: e205523512c83e9236698dbe7eb9649ec56e80ca
   subpackages:
   - core
   - terminal
@@ -662,7 +664,7 @@ imports:
   - exec
   - pointer
 - name: sigs.k8s.io/yaml
-  version: fd68e9863619f6ec2fdd8625fe1f02e7c877e480
+  version: 5fa4c7f5e38dda46711e0c2efd62370cfae67205
 - name: vbom.ml/util
   version: db5cfe13f5cc80a4990d98e2e1b0707a4d1a5394
   subpackages:
