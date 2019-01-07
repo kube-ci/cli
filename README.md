@@ -1,7 +1,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/kube-ci/cli)](https://goreportcard.com/report/github.com/kube-ci/cli)
 [![Build Status](https://travis-ci.org/kube-ci/cli.svg?branch=master)](https://travis-ci.org/kube-ci/cli)
 [![codecov](https://codecov.io/gh/kube-ci/cli/branch/master/graph/badge.svg)](https://codecov.io/gh/kube-ci/cli)
-[![Docker Pulls](https://img.shields.io/docker/pulls/kube-ci/kubeci-cli.svg)](https://hub.docker.com/r/kubeci/kubeci-cli/)
+[![Github All Releases](https://img.shields.io/github/downloads/kube-ci/cli/total.svg)](https://github.com/kube-ci/cli/releases)
 [![Slack](https://slack.appscode.com/badge.svg)](https://slack.appscode.com)
 [![Twitter](https://img.shields.io/twitter/follow/thekubeci.svg?style=social&logo=twitter&label=Follow)](https://twitter.com/intent/follow?screen_name=TheKubeCi)
 
