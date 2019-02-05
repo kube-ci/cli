@@ -384,7 +384,7 @@ func schema_engine_apis_engine_v1alpha1_Step(ref common.ReferenceCallback) commo
 							},
 						},
 					},
-					"dependency": {
+					"requires": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -1165,6 +1165,12 @@ func schema_engine_apis_engine_v1alpha1_WorkplanSpec(ref common.ReferenceCallbac
 					"resources": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.ResourceRequirements"),
+						},
+					},
+					"manuallyTriggered": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
 						},
 					},
 				},
