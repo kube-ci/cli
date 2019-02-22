@@ -24,31 +24,30 @@ var (
 title: Reference | KubeCI CLI
 description: KubeCI CLI Reference
 menu:
-  product_kubeci_{{ .Version }}:
+  docs_{{ .Version }}:
     identifier: reference-cli
     name: KubeCI CLI
-    weight: 10
+    weight: 30
     parent: reference
-menu_name: product_kubeci_{{ .Version }}
+menu_name: docs_{{ .Version }}
 ---
 `))
 
 	_ = template.Must(tplFrontMatter.New("cmd").Parse(`---
 title: {{ .Name }}
 menu:
-  product_kubeci_{{ .Version }}:
+  docs_{{ .Version }}:
     identifier: {{ .ID }}
     name: {{ .Name }}
     parent: reference-cli
 {{- if .RootCmd }}
     weight: 0
 {{ end }}
-product_name: kubeci
-menu_name: product_kubeci_{{ .Version }}
+menu_name: docs_{{ .Version }}
 section_menu_id: reference
 {{- if .RootCmd }}
 aliases:
-  - products/kubeci/{{ .Version }}/reference/cli/
+  - /docs/{{ .Version }}/reference/cli/
 {{ end }}
 ---
 `))
