@@ -12,6 +12,7 @@ import (
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
 	cmdutil "k8s.io/kubernetes/pkg/kubectl/cmd/util"
+	"kmodules.xyz/client-go/logs"
 )
 
 func NewRootCmd() *cobra.Command {
@@ -37,9 +38,8 @@ func NewRootCmd() *cobra.Command {
 	matchVersionKubeConfigFlags.AddFlags(flags)
 
 	flags.AddGoFlagSet(flag.CommandLine)
-	// ref: https://github.com/kubernetes/kubernetes/issues/17162#issuecomment-225596212
-	flag.CommandLine.Parse([]string{})
-	flags.BoolVar(&cli.EnableAnalytics, "analytics", cli.EnableAnalytics, "Send analytical events to Google Analytics")
+	logs.ParseFlags()
+	flags.BoolVar(&cli.EnableAnalytics, "enable-analytics", cli.EnableAnalytics, "Send analytical events to Google Analytics")
 	flag.Set("stderrthreshold", "ERROR")
 
 	rootCmd.AddCommand(NewCmdWorkplanLogs(matchVersionKubeConfigFlags))
