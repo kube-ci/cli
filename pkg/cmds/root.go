@@ -4,15 +4,15 @@ import (
 	"flag"
 
 	v "github.com/appscode/go/version"
-	"github.com/appscode/kutil/tools/cli"
 	enginescheme "github.com/kube-ci/engine/client/clientset/versioned/scheme"
 	gitscheme "github.com/kube-ci/git-apiserver/client/clientset/versioned/scheme"
 	"github.com/spf13/cobra"
-	utilflag "k8s.io/apiserver/pkg/util/flag"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	clientsetscheme "k8s.io/client-go/kubernetes/scheme"
+	cliflag "k8s.io/component-base/cli/flag"
 	cmdutil "k8s.io/kubernetes/pkg/kubectl/cmd/util"
 	"kmodules.xyz/client-go/logs"
+	"kmodules.xyz/client-go/tools/cli"
 )
 
 func NewRootCmd() *cobra.Command {
@@ -30,9 +30,9 @@ func NewRootCmd() *cobra.Command {
 	flags := rootCmd.PersistentFlags()
 	// Normalize all flags that are coming from other packages or pre-configurations
 	// a.k.a. change all "_" to "-". e.g. glog package
-	flags.SetNormalizeFunc(utilflag.WordSepNormalizeFunc)
+	flags.SetNormalizeFunc(cliflag.WordSepNormalizeFunc)
 
-	kubeConfigFlags := genericclioptions.NewConfigFlags()
+	kubeConfigFlags := genericclioptions.NewConfigFlags(true)
 	kubeConfigFlags.AddFlags(flags)
 	matchVersionKubeConfigFlags := cmdutil.NewMatchVersionFlags(kubeConfigFlags)
 	matchVersionKubeConfigFlags.AddFlags(flags)

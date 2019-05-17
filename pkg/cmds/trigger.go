@@ -3,13 +3,13 @@ package cmds
 import (
 	"fmt"
 
-	"github.com/appscode/kutil/meta"
 	"github.com/kube-ci/cli/pkg/trigger"
 	ext_api "github.com/kube-ci/engine/apis/extensions/v1alpha1"
 	"github.com/spf13/cobra"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/util/yaml"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
+	"kmodules.xyz/client-go/meta"
 )
 
 func NewCmdTrigger(clientGetter genericclioptions.RESTClientGetter) *cobra.Command {
